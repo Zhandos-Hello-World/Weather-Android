@@ -38,6 +38,8 @@ android {
 dependencies {
     implementation(project(path = ":lib:core"))
     implementation(project(path = ":lib:coreUI"))
+    implementation(project(path = ":lib:coreData"))
 
     implementation(libs.bundles.androidx)
+    implementation(libs.bundles.di)
 }
