@@ -39,7 +39,11 @@ dependencies {
     implementation(project(path = ":lib:core"))
     implementation(project(path = ":lib:coreUI"))
     implementation(project(path = ":lib:coreData"))
+    implementation(project(path = ":lib:navigation"))
+
+    implementation(project(path = ":features:weather"))
 
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.di)
+    implementation(libs.cicerone)
 }

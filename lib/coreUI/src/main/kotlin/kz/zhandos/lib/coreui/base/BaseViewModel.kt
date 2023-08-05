@@ -2,6 +2,7 @@ package kz.zhandos.lib.coreui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +19,7 @@ abstract class BaseViewModel : ViewModel(), KoinComponent {
     private val _event = MutableSharedFlow<SystemEvent>()
     val event: SharedFlow<SystemEvent> = _event.asSharedFlow()
     private val errorHandler: ErrorHandler by inject()
+    val router: Router by inject()
 
     fun <T> dataRequest(
         dispatcher: CoroutineDispatcher = Dispatchers.Default,

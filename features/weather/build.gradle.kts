@@ -4,12 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "kz.zhandos.lib.coreui"
+    namespace = "kz.zhandos.features.weather"
     compileSdk = 33
 
     defaultConfig {
         minSdk = 24
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -17,6 +18,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         viewBinding = true
     }
@@ -24,6 +26,8 @@ android {
 
 dependencies {
     implementation(project(path = ":lib:core"))
+    implementation(project(path = ":lib:coreUI"))
+    implementation(project(path = ":lib:navigation"))
 
     implementation(libs.bundles.androidx)
     implementation(libs.androidMaterial)
