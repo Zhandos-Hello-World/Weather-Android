@@ -29,6 +29,7 @@ dependencyResolutionManagement {
             version("koin", "3.4.0")
             version("lifecycle", "2.6.1")
             version("cicerone", "7.1")
+            version("viewModelScope", "2.6.1")
 
             plugin("android-application", "com.android.application").versionRef("androidGradlePlugin")
             plugin("android-library", "com.android.library").versionRef("androidGradlePlugin")
@@ -43,7 +44,7 @@ dependencyResolutionManagement {
 
             library("kotlinxCoroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-core").versionRef("coroutine")
             library("androidCoroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-android").versionRef("coroutine")
-
+            library("viewModelScope", "androidx.lifecycle", "lifecycle-viewmodel-ktx").versionRef("viewModelScope")
 
             library("koltinxSerialization", "org.jetbrains.kotlinx", "kotlinx-serialization-core").versionRef("serialization")
             library("koitlinxJsonSerial", "org.jetbrains.kotlinx", "kotlinx-serialization-json").versionRef("serialization")

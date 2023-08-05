@@ -17,9 +17,16 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation(project(path = ":lib:core"))
+
     implementation(libs.bundles.androidx)
     implementation(libs.androidMaterial)
+    implementation(libs.viewModelScope)
+    implementation(libs.bundles.di)
 }

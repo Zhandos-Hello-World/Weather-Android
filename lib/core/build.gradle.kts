@@ -21,4 +21,6 @@ android {
 }
 
 dependencies {
+    implementation(libs.bundles.coroutine)
+    implementation(libs.bundles.di)
 }
