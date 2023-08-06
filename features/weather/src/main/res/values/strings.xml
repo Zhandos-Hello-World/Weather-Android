@@ -7,4 +7,6 @@
     <string name="sea_level">Sea level</string>
     <string name="reload">Reload</string>
     <string name="now">Now</string>
+    <string name="sunset">Sunset</string>
+    <string name="sunrise">Sunrise</string>
 </resources>

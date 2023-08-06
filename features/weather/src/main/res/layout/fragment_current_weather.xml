@@ -78,6 +78,37 @@
                 app:title="@string/sea_level" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/third"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/second_info">
+
+            <kz.zhandos.lib.coreui.viewgroup.SmallInfoCard
+                android:id="@+id/sunset"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:icon="@drawable/ic_sunny"
+                app:title="@string/sunset" />
+
+            <View
+                android:layout_width="16dp"
+                android:layout_height="0dp" />
+
+            <kz.zhandos.lib.coreui.viewgroup.SmallInfoCard
+                android:id="@+id/sunrise"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:icon="@drawable/ic_sunny"
+                app:title="@string/sunrise" />
+        </LinearLayout>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/show_list"
             android:layout_width="wrap_content"

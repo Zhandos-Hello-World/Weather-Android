@@ -70,6 +70,8 @@ class CurrentWeatherFragment :
             pressure.info = dvo.pressure
             humidity.info = dvo.humidity
             seaLevel.info = dvo.seaLevel
+            sunrise.info = dvo.sunrise
+            sunset.info = dvo.sunset
         }
         viewBinding.showList.setOnClickListener {
             viewModel.navigateToWeatherList()
