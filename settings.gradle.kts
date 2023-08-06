@@ -30,6 +30,7 @@ dependencyResolutionManagement {
             version("lifecycle", "2.6.1")
             version("cicerone", "7.1")
             version("viewModelScope", "2.6.1")
+            version("chucker", "3.5.2")
 
             plugin("android-application", "com.android.application").versionRef("androidGradlePlugin")
             plugin("android-library", "com.android.library").versionRef("androidGradlePlugin")
@@ -57,6 +58,9 @@ dependencyResolutionManagement {
             library("koinAndroid", "io.insert-koin", "koin-android").versionRef("koin")
 
             library("cicerone", "com.github.terrakok", "cicerone").versionRef("cicerone")
+
+            library("chuckerDebug", "com.github.chuckerteam.chucker", "library").versionRef("chucker")
+            library("chuckerRelease", "com.github.chuckerteam.chucker", "library-no-op").versionRef("chucker")
 
             bundle("androidx", listOf("coreKtx", "appCompat"))
             bundle("serialization", listOf("koltinxSerialization", "koitlinxJsonSerial"))

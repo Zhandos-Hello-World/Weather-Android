@@ -47,7 +47,6 @@ dependencies {
     implementation(libs.bundles.di)
     implementation(libs.cicerone)
 
-
-    debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
-    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
+    debugImplementation(libs.chuckerDebug)
+    releaseImplementation(libs.chuckerRelease)
 }
