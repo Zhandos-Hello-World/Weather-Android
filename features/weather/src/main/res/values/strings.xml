@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="weather_banner_image">weather banner image</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="pressure">Pressure</string>
+    <string name="humidity">humidity</string>
+    <string name="sea_level">Sea level</string>
+    <string name="reload">Reload</string>
+</resources>

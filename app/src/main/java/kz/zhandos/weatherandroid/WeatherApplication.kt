@@ -18,7 +18,7 @@ class WeatherApplication : Application() {
 
             modules(
                 coreModule,
-                coreDataModule(BuildConfig.BASE_URL),
+                coreDataModule(BuildConfig.BASE_URL, BuildConfig.API_KEY),
                 navigationModule,
                 mainModule,
                 weatherModule,

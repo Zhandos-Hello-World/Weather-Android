@@ -1,5 +1,7 @@
 package kz.zhandos.lib.core.data.network
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -16,7 +18,11 @@ private const val WRITE_TIMEOUT_SECONDS = 60L
 
 
 @OptIn(ExperimentalSerializationApi::class)
-class NetworkApiFactory(private val url: String) {
+class NetworkApiFactory(
+    private val url: String,
+    private val apiKey: String,
+    private val context: Context
+) {
     private val json = createJson()
     private val authorizedOkHttpClient = createOkHttpClient()
 
@@ -45,7 +51,8 @@ class NetworkApiFactory(private val url: String) {
             readTimeout(READ_TIMEOUT_SECONDS, TimeUnit.SECONDS)
             writeTimeout(WRITE_TIMEOUT_SECONDS, TimeUnit.SECONDS)
 
-            addInterceptor(AuthorizationInterceptor())
+            addInterceptor(ApiKeyInterceptor(apiKey))
+            addInterceptor(ChuckerInterceptor.Builder(context).build())
         }.build()
     }
 
@@ -55,6 +62,7 @@ class NetworkApiFactory(private val url: String) {
             encodeDefaults = true
             ignoreUnknownKeys = true
             isLenient = true
+            prettyPrint = true
         }
     }
 }

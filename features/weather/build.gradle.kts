@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -27,11 +28,14 @@ android {
 dependencies {
     implementation(project(path = ":lib:core"))
     implementation(project(path = ":lib:coreUI"))
+    implementation(project(path = ":lib:coreData"))
     implementation(project(path = ":lib:navigation"))
 
     implementation(libs.bundles.androidx)
     implementation(libs.androidMaterial)
     implementation(libs.viewModelScope)
     implementation(libs.bundles.di)
+    implementation(libs.bundles.retrofit)
     implementation(libs.cicerone)
+    implementation(libs.bundles.serialization)
 }

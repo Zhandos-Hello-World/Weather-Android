@@ -13,6 +13,7 @@ android {
         minSdk = 24
 
         buildConfigField("String", "BASE_URL", "\"https://api.openweathermap.org\"")
+        buildConfigField("String", "API_KEY", "\"e6aa2b8805ea7395b9835bc2b7a6f9ab\"")
     }
 
     compileOptions {
@@ -36,4 +37,7 @@ dependencies {
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.retrofit)
     implementation(libs.bundles.di)
+
+    debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
 }
