@@ -8,6 +8,10 @@
         <item name="android:textSize">112sp</item>
     </style>
 
+    <style name="ProductSans.H2">
+        <item name="android:textSize">57sp</item>
+    </style>
+
     <style name="ProductSans.S1">
         <item name="android:textSize">22sp</item>
     </style>

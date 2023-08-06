@@ -1,11 +1,11 @@
 package kz.zhandos.features.weather.presentation.navigation
 
 import com.github.terrakok.cicerone.androidx.FragmentScreen
-import kz.zhandos.features.weather.presentation.screen.CurrentWeatherFragment
-import kz.zhandos.features.weather.presentation.screen2.SecondFragment
+import kz.zhandos.features.weather.presentation.current.CurrentWeatherFragment
+import kz.zhandos.features.weather.presentation.list.WeatherListFragment
 
 object Screens {
-    fun ScreenFirst() = FragmentScreen { CurrentWeatherFragment() }
-    fun ScreenSecond() = FragmentScreen { SecondFragment() }
+    fun ScreenCurrentWeather() = FragmentScreen { CurrentWeatherFragment() }
+    fun ScreenListWeather() = FragmentScreen { WeatherListFragment() }
 
 }

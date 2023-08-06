@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), NavigationDelegate by DefaultNavigatio
         subscribeToEvents()
         registerNavigatorDelegate(this, R.id.fragment_container, navigatorHolder)
 
-        router.replaceScreen(Screens.ScreenFirst())
+        router.replaceScreen(Screens.ScreenCurrentWeather())
     }
 
     override fun onResume() {

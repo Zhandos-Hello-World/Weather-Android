@@ -1,4 +1,4 @@
-package kz.zhandos.features.weather.presentation.screen
+package kz.zhandos.features.weather.presentation.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,36 +9,37 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kz.zhandos.features.weather.databinding.FragmentCurrentWeatherBinding
-import kz.zhandos.features.weather.presentation.model.WeatherDvo
+import kz.zhandos.features.weather.databinding.FragmentWeatherListBinding
+import kz.zhandos.features.weather.presentation.list.adapter.WeatherListAdapter
+import kz.zhandos.features.weather.presentation.model.WeatherItemDvo
 import kz.zhandos.lib.coreui.base.BaseFragment
 import kz.zhandos.lib.coreui.base.ViewState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CurrentWeatherFragment :
-    BaseFragment<CurrentWeatherViewModel, FragmentCurrentWeatherBinding>() {
-    override val viewModel: CurrentWeatherViewModel by viewModel()
+class WeatherListFragment : BaseFragment<WeatherListViewModel, FragmentWeatherListBinding>() {
+    override val viewModel: WeatherListViewModel by viewModel()
+    private var adapter: WeatherListAdapter? = null
 
     override fun inflateViewBinding(
         inflater: LayoutInflater, container: ViewGroup?
-    ) = FragmentCurrentWeatherBinding.inflate(inflater, container, false)
+    ) = FragmentWeatherListBinding.inflate(inflater, container, false)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter = WeatherListAdapter()
+        viewBinding.data.adapter = adapter
 
         viewModel.uiState.flowWithLifecycle(lifecycle).onEach(::render).launchIn(lifecycleScope)
-
-        viewModel.getCurrentWeather()
     }
-
 
     private fun render(state: ViewState) {
         hideAll()
         when (state) {
             is ViewState.Data<*> -> {
-                (state.data as? WeatherDvo)?.let {
+                (state.data as? List<*>)?.let { data ->
                     viewBinding.dataScreen.isVisible = true
-                    dataFetched(it)
+                    configureDataScreen(data.map { it as WeatherItemDvo })
                 }
             }
 
@@ -46,7 +47,7 @@ class CurrentWeatherFragment :
                 viewBinding.reloadBtn.apply {
                     isVisible = true
                     setOnClickListener {
-                        viewModel.getCurrentWeather()
+                        viewModel.getWeatherList()
                     }
                 }
             }
@@ -57,21 +58,18 @@ class CurrentWeatherFragment :
         }
     }
 
-    private fun dataFetched(dvo: WeatherDvo) {
+    private fun configureDataScreen(list: List<WeatherItemDvo>) {
+        if (list.isNotEmpty()) {
+            viewBinding.apply {
+                currentTemp.text = list.first().temp
+                feelsLike.text = list.first().feelsLike
+                back.setOnClickListener {
+                    viewModel.backToScreen()
+                }
+            }
+        }
 
-        viewBinding.weatherBanner.apply {
-            currentTemp = dvo.temp
-            location = "Almaty, Kazakhstan"
-            description = dvo.status
-            feelsLikeTemp = dvo.feelsLike
-            currentDataAndTime = dvo.dateAndTime
-        }
-        viewBinding.apply {
-            wind.info = dvo.windSpeed
-            pressure.info = dvo.pressure
-            humidity.info = dvo.humidity
-            seaLevel.info = dvo.seaLevel
-        }
+        adapter?.submitList(list)
     }
 
     private fun hideAll() {
@@ -80,6 +78,5 @@ class CurrentWeatherFragment :
             dataScreen.isVisible = false
             reloadBtn.isVisible = false
         }
-
     }
 }
